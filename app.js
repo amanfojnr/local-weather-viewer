@@ -8,6 +8,7 @@ $("document").ready(() => {
     const $status = $("#status");
     const $location = $("#location");
     const $tempButton = $(".cmn-toggle");
+    const $tempIcon = $("#tempIcon"); 
     const _APIkey = "0d00e4ff66989b59245eec9142f1ec29";
 
 
@@ -15,8 +16,6 @@ $("document").ready(() => {
     getLocation(showWeather);
 
  
-
-  
 
     // get location using geolocation api
     function getLocation(success){
@@ -29,7 +28,7 @@ $("document").ready(() => {
                   {"enableHighAccuracy":true});
         }
         else {
-            console.log("geolocation is not available, sorry.")
+            alert("geolocation is not available for your device, sorry.")
         }
     }
 
@@ -53,15 +52,15 @@ $("document").ready(() => {
                     console.log(data);
                     
                     $tempUnit.text(data.currently.temperature);
+                    $tempIcon.html("&deg;F");
                     $status.text(data.currently.summary);
                     $location.text(data.timezone);
 
-                    console.log(data.currently.icon);
-
                     // create weather icon
 
-                    const skycon = new Skycons({"color":"#0085aa"});
-                    let iconType = data.currently.icon.replace("-", "_").toUpperCase();
+                    const skycon = new Skycons({"color":"#0085aa", "resizeClear":true});
+                    let iconType = data.currently.icon.replace(/-/g, "_").toUpperCase();
+                    console.log(iconType);
                     skycon.add("icon", Skycons[iconType] || Skycons['DEFAULT']);
                     skycon.play();
 
@@ -70,16 +69,19 @@ $("document").ready(() => {
                     const tempUnitFahrenheit = $tempUnit.text();
                     const tempUnitCelsius = convertToCelsius($tempUnit.text());
 
+                    $(".switch").show();
+
                     $tempButton.on("click", () => {
                         if (!$tempButton.is(":checked")) {
                             $tempUnit.text(tempUnitFahrenheit);
+                             $tempIcon.html("&deg;F");
                         }
                         else {
                             $tempUnit.text(tempUnitCelsius);
+                             $tempIcon.html("&deg;C");
+                            
                         } 
-
     });
-
 
                 }
 

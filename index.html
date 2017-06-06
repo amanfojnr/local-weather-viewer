@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width initial-scale=1">
+        <meta name="author" content="Kenneth Amanfo Junior">
+        <meta name="description" content="an app that displays current weather based on locaion.">
         <title>local weather viewer</title>
         <link rel="stylesheet" href="main.css">
     </head>
 
     <body>
-        <div class="app-window">
-            <h1>Local Weather Viewer</h1>
-        <div class="info-box">
-            <canvas id="icon" width="50" height="50"></canvas>
-            <p id="tempUnit"></p>&deg;F
+        <div class="appWindow">
+        <div class="infoBox">
+             <h1>Local Weather Viewer</h1>
+            <canvas id="icon"></canvas>
+            <div class="textInfo">
+           <div class="tempInfo">
+            <p id="tempUnit"></p><p id="tempIcon"></p>
+            </div>
             <p id="location"></p>
-            <p id="status"></p>   
+            <p id="status">waiting...</p>
+            </div>   
+
+                 <!-- switch -->
+            <div class="switch">
+                <input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-f-c" type="checkbox">
+                <label for="cmn-toggle-7" data-on="&deg;F" data-off="&deg;C"></label>
+             </div>
         </div>
-        <!-- swithc -->
-      <div class="switch">
-        <input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-f-c" type="checkbox">
-        <label for="cmn-toggle-7" data-on="&deg;F" data-off="&deg;C"></label>
-       </div>
                 </div>
         
 

@@ -1,10 +1,52 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
+
+html {
+    height: 100%;
+
+}
+
 body {
     background: #fcfeff;
     color: #202123;
     font-family: 'Comfortaa', cursive;
+    height: 100%;
 }
+
+.appWindow {
+    height: 100%;
+    display: flex;
+}
+
+
+.infoBox {
+    text-align: center;
+    margin: auto;
+}
+
+.infoBox h1 {
+    font-size: 2em;
+}
+
+
+.infoBox p {
+    font-size: 1.3em;
+}
+
+
+
+canvas#icon {
+    max-height: 200px;
+    max-width: 200px;
+    
+}
+
+
+.switch {
+    display: none;
+    margin: auto;
+}
+
 
 /* toggle button */
 .cmn-toggle {
