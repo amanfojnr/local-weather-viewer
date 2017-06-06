@@ -1,3 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
 body {
-    background: #f7f7f7;
+    background: #fcfeff;
+    color: #202123;
+    font-family: 'Comfortaa', cursive;
+}
+
+/* toggle button */
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+input.cmn-toggle-f-c + label {
+  padding: 2px;
+  width: 80px;
+  height: 30px;
+}
+input.cmn-toggle-f-c + label:before,
+input.cmn-toggle-f-c + label:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: #fcfeff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 35px;
+}
+input.cmn-toggle-f-c + label:before {
+  background-color: #0085aa;
+  content: attr(data-off);
+  transition: transform 0.5s;
+  backface-visibility: hidden;
+}
+input.cmn-toggle-f-c + label:after {
+  background-color: #202123;
+  content: attr(data-on);
+  transition: transform 0.5s;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+input.cmn-toggle-f-c:checked + label:before {
+  transform: rotateY(180deg);
+}
+input.cmn-toggle-f-c:checked + label:after {
+  transform: rotateY(0);
 }

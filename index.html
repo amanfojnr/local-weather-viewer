@@ -9,12 +9,17 @@
         <div class="app-window">
             <h1>Local Weather Viewer</h1>
         <div class="info-box">
-            <img id="icon" src="" alt="">
-            <p id="tempUnit"></p>
-            <p id="status"></p>
+            <canvas id="icon" width="50" height="50"></canvas>
+            <p id="tempUnit"></p>&deg;F
             <p id="location"></p>
+            <p id="status"></p>   
         </div>
-        </div>
+        <!-- swithc -->
+      <div class="switch">
+        <input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-f-c" type="checkbox">
+        <label for="cmn-toggle-7" data-on="&deg;F" data-off="&deg;C"></label>
+       </div>
+                </div>
         
 
         <!-- import jquery3 -->
@@ -22,6 +27,9 @@
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
+
+       <!-- import skycons -->     
+       <script src="skycons.js"></script>
             
         <!-- import app.js -->
         <script src="app.js"></script>

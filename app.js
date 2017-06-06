@@ -7,14 +7,16 @@ $("document").ready(() => {
     const $tempUnit = $("#tempUnit");
     const $status = $("#status");
     const $location = $("#location");
+    const $tempButton = $(".cmn-toggle");
     const _APIkey = "0d00e4ff66989b59245eec9142f1ec29";
 
 
 
     getLocation(showWeather);
 
+ 
 
-
+  
 
     // get location using geolocation api
     function getLocation(success){
@@ -49,10 +51,35 @@ $("document").ready(() => {
                 "dataType" : "jsonp",
                 "success" : data => {
                     console.log(data);
-
+                    
                     $tempUnit.text(data.currently.temperature);
                     $status.text(data.currently.summary);
                     $location.text(data.timezone);
+
+                    console.log(data.currently.icon);
+
+                    // create weather icon
+
+                    const skycon = new Skycons({"color":"#0085aa"});
+                    let iconType = data.currently.icon.replace("-", "_").toUpperCase();
+                    skycon.add("icon", Skycons[iconType] || Skycons['DEFAULT']);
+                    skycon.play();
+
+                    // forgive me for i have sinned,
+                    //  i will be back to write better code
+                    const tempUnitFahrenheit = $tempUnit.text();
+                    const tempUnitCelsius = convertToCelsius($tempUnit.text());
+
+                    $tempButton.on("click", () => {
+                        if (!$tempButton.is(":checked")) {
+                            $tempUnit.text(tempUnitFahrenheit);
+                        }
+                        else {
+                            $tempUnit.text(tempUnitCelsius);
+                        } 
+
+    });
+
 
                 }
 
@@ -60,15 +87,10 @@ $("document").ready(() => {
         );
     }
 
-
-
-
-
-
-
-
-
-
-
+    // convert from fahrenheit to Celsius
+    function convertToCelsius(fahrenheit){
+        let temp =  (Number(fahrenheit)-32) * 5/9;
+        return temp.toFixed(2);
+    }
 
 });
